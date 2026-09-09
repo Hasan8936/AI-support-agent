@@ -1,0 +1,16 @@
+tweet_id,author_id,inbound,created_at,text,response_tweet_id,in_response_to_tweet_id
+1,AmazonHelp,False,2024-01-01T00:00:00Z,"Thanks for reaching out, we are looking into it.",,0
+2,customer_1,True,2024-01-01T00:01:00Z,"My package is late and still says in transit.",1,
+3,AmazonHelp,False,2024-01-01T00:05:00Z,"We can look into this. Please share the tracking number.",,2
+4,customer_2,True,2024-01-01T00:08:00Z,"I was charged twice for the same order and need a refund.",,
+5,AmazonHelp,False,2024-01-01T00:11:00Z,"We can review the duplicate charge and issue a refund if eligible.",,4
+6,customer_3,True,2024-01-01T00:18:00Z,"I cannot log in to my account, my password reset doesn't work.",,
+7,AmazonHelp,False,2024-01-01T00:22:00Z,"We can reset the account and help recover access.",,6
+8,customer_4,True,2024-01-01T00:30:00Z,"My item arrived damaged and I need a replacement.",,
+9,AmazonHelp,False,2024-01-01T00:35:00Z,"We are sorry and can help with a replacement or refund.",,8
+10,customer_5,True,2024-01-01T00:45:00Z,"Someone used my account without permission. This is a fraud issue.",,
+11,AmazonHelp,False,2024-01-01T00:50:00Z,"We take this seriously and will escalate this to our security team.",,10
+12,customer_6,True,2024-01-01T01:00:00Z,"Your service is terrible and I am very disappointed.",,
+13,AmazonHelp,False,2024-01-01T01:08:00Z,"We are sorry for the frustration and appreciate the feedback.",,12
+14,customer_7,True,2024-01-01T01:15:00Z,"Thanks for the quick help, I love the product.",,
+15,AmazonHelp,False,2024-01-01T01:20:00Z,"Thank you for the kind words. We are glad we could help.",,14

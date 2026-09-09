@@ -1,0 +1,47 @@
+intents:
+  - name: delivery_delay
+    description: "Customer reports a package or order that has not arrived on time."
+    examples:
+      - "Where is my package? It's been a week."
+      - "My order hasn't arrived and I need an update."
+    risk_tier: low
+  - name: refund_request
+    description: "Customer asks for a refund, charge reversal, or billing correction."
+    examples:
+      - "I was charged twice and want my money back."
+      - "Can you refund my order?"
+    risk_tier: medium
+  - name: account_access
+    description: "Customer cannot log in, reset a password, or access an account."
+    examples:
+      - "I can't sign in to my account."
+      - "Reset my password please."
+    risk_tier: low
+  - name: product_defect
+    description: "Customer received a defective, damaged, or wrong item."
+    examples:
+      - "My package arrived damaged."
+      - "This item is broken."
+    risk_tier: medium
+  - name: fraud_or_safety
+    description: "Customer reports fraud, security, safety, or legal concern."
+    examples:
+      - "Someone used my account without permission."
+      - "This is a safety issue with the product."
+    risk_tier: high
+  - name: general_complaint
+    description: "General dissatisfaction that does not fit a narrower category."
+    examples:
+      - "This is unacceptable."
+      - "Your service is terrible."
+    risk_tier: low
+  - name: praise_or_other
+    description: "Positive feedback or messages that do not require action."
+    examples:
+      - "Love this product!"
+      - "Thanks for the quick response."
+    risk_tier: low
+  - name: uncategorized
+    description: "Message does not fit cleanly in the known intents."
+    examples: []
+    risk_tier: medium

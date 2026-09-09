@@ -1,0 +1,5 @@
+# Conservative by design: false auto-handles cost more than false escalations.
+high_risk_intents:
+  - fraud_or_safety
+retrieval_threshold: 0.25
+llm_threshold: 0.55

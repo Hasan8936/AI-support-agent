@@ -62,13 +62,3 @@ def evaluate_predictions(predictions: List[Dict[str, Any]], gold: List[Dict[str,
             "false_escalate": false_positive,
         },
     }
-
-
-def cohen_kappa(human_scores: List[int], judge_scores: List[int]) -> float:
-    """Unweighted Cohen's kappa for an independently human-audited slice."""
-    if len(human_scores) != len(judge_scores) or not human_scores:
-        raise ValueError("Human and judge score lists must be non-empty and aligned")
-    observed = sum(a == b for a, b in zip(human_scores, judge_scores)) / len(human_scores)
-    hp, jp = Counter(human_scores), Counter(judge_scores)
-    expected = sum((hp[key] / len(human_scores)) * (jp[key] / len(judge_scores)) for key in set(hp) | set(jp))
-    return round((observed - expected) / (1 - expected), 3) if expected < 1 else 1.0

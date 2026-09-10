@@ -39,7 +39,7 @@ def _safe_resolution(text: str) -> str:
     return " ".join(text.split())
 
 
-def draft_reply(message: str, intent: str, precedents: List[Dict[str, Any]]) -> str:
+def draft_reply(_message: str, intent: str, precedents: List[Dict[str, Any]]) -> str:
     if not precedents:
         return get_intent_template(intent)
 

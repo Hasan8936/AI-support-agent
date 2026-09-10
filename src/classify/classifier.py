@@ -47,6 +47,3 @@ def classify_message(message: str, candidate_labels: Iterable[str] | None = None
     return predict_intent(message, candidate_labels).label
 
 
-def majority_label(examples: Iterable[dict]) -> str:
-    labels = [row.get("true_intent") for row in examples if row.get("true_intent")]
-    return Counter(labels).most_common(1)[0][0] if labels else "general_complaint"

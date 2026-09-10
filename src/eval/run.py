@@ -33,10 +33,6 @@ ACTION_HINTS = {
 }
 
 
-def _reply_template(intent: str) -> str:
-    return get_intent_template(intent)
-
-
 def _build_reference_example(intent: str, message: str) -> str:
     return reference_reply_for_intent(intent)
 

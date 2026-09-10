@@ -8,14 +8,15 @@ from typing import Any, Dict, List
 
 from src.ingest.threads import build_threads
 from src.pipeline import run_agent
+from src.security import resolve_repo_path
 
 
 def run_pipeline(input_csv: str | Path, output_csv: str | Path, brand: str = "AmazonHelp", limit: int = 200) -> List[Dict[str, Any]]:
-    input_path = Path(input_csv)
+    input_path = resolve_repo_path(input_csv)
     with input_path.open(encoding="utf-8", newline="") as handle:
         source = list(csv.DictReader(handle))
     is_tweet_data = bool(source and "tweet_id" in source[0])
-    threads = build_threads(input_path if is_tweet_data else "data/raw/support_tweets.csv", brand)
+    threads = build_threads(input_path if is_tweet_data else resolve_repo_path("data/raw/support_tweets.csv"), brand)
     messages = ([{"row_id": row.get("row_id", f"input_{index:04d}"), "message": row.get("customer_msg") or row.get("message") or row.get("text", "")}
                  for index, row in enumerate(source, 1)] if not is_tweet_data else
                 [{"row_id": f"thread_{index:04d}", "message": row["customer_initial_msg"]} for index, row in enumerate(threads, 1)])
@@ -30,7 +31,7 @@ def run_pipeline(input_csv: str | Path, output_csv: str | Path, brand: str = "Am
             outcome.pop("precedents", None)
             rows.append(outcome)
 
-    output_path = Path(output_csv)
+    output_path = resolve_repo_path(output_csv, allow_missing=True)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=[

@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import csv
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
+from src.security import resolve_repo_path
 
 
 def _clean_text(value: Any) -> str:
@@ -10,9 +12,11 @@ def _clean_text(value: Any) -> str:
 
 
 def build_threads(csv_path: str | Path, brand: str = "AmazonHelp") -> List[Dict[str, Any]]:
-    csv_file = Path(csv_path)
+    csv_file = resolve_repo_path(csv_path)
     if not csv_file.exists():
         raise FileNotFoundError(f"Sample data file not found: {csv_file}")
+    if not csv_file.is_file() or csv_file.is_symlink():
+        raise ValueError(f"Unsupported dataset path: {csv_file}")
 
     with csv_file.open("r", encoding="utf-8", newline="") as handle:
         raw = list(csv.DictReader(handle))

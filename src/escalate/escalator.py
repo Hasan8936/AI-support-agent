@@ -3,11 +3,23 @@ from __future__ import annotations
 from typing import Dict, Tuple
 
 
-def decide_escalation(intent: str, retrieval_confidence: float, llm_confidence: float, config: Dict | None = None) -> Tuple[str, str]:
-    config = config or {"high_risk_intents": ["fraud_or_safety"], "retrieval_threshold": 0.25, "llm_threshold": 0.55}
+DEFAULT_CONFIG: Dict[str, object] = {
+    "high_risk_intents": ["fraud_or_safety"],
+    "retrieval_threshold": 0.25,
+    "llm_threshold": 0.55,
+}
+
+
+def decide_escalation(
+    intent: str,
+    retrieval_confidence: float,
+    llm_confidence: float,
+    config: Dict | None = None,
+) -> Tuple[str, str]:
+    config = {**DEFAULT_CONFIG, **(config or {})}
     high_risk = set(config.get("high_risk_intents", []))
-    retrieval_threshold = float(config.get("retrieval_threshold", 0.25))
-    llm_threshold = float(config.get("llm_threshold", 0.55))
+    retrieval_threshold = float(config.get("retrieval_threshold", DEFAULT_CONFIG["retrieval_threshold"]))
+    llm_threshold = float(config.get("llm_threshold", DEFAULT_CONFIG["llm_threshold"]))
 
     if intent in high_risk:
         return "escalate_to_human", "Human review required: this is a policy-defined high-risk intent."

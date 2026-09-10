@@ -10,7 +10,7 @@ from typing import Any
 RUBRIC_VERSION = "v1"
 
 
-def score_reply(message: str, reply: str, precedents: list[dict[str, Any]]) -> dict[str, Any]:
+def score_reply(_message: str, reply: str, precedents: list[dict[str, Any]]) -> dict[str, Any]:
     lower = (reply or "").lower()
     precedent_words = set(" ".join(str(p.get("resolution_text", "")) for p in precedents).lower().split())
     reply_words = set(lower.split())

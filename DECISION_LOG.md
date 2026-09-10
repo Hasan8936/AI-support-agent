@@ -61,3 +61,19 @@
 - **Decision:** Store the run outputs under `results/` rather than embedding them in the repo root.
   **Why:** It keeps the generated artifacts separate from the source code and matches the repository conventions.
   **Alternative considered:** Writing results directly into the root or README; rejected as less organized.
+
+- **Decision:** Add a real LLM-as-judge (`src/eval/llm_judge.py`) behind `--judge {heuristic,llm}`, defaulting to the offline heuristic.
+  **Why:** The assignment requires an independently prompted API judge plus human-agreement evidence; a keyword rubric alone cannot support a reply-quality claim. Defaulting to the heuristic preserves the README's 15-minute, no-API-key reproducibility promise.
+  **Alternative considered:** Making `llm` the default judge; rejected because it would silently require a paid API key just to run the smoke test.
+
+- **Decision:** Support both Anthropic and OpenAI as judge providers via `--judge-provider`, selected by explicit flag/env var rather than auto-detected from whichever key happens to be set.
+  **Why:** Avoids ambiguous behavior if both keys are present, and keeps the judge model choice auditable in the report (`judge_provider` is recorded in `reply_quality_scores.json`).
+  **Alternative considered:** Auto-detecting the provider from available env vars; rejected as implicit and harder to reproduce exactly.
+
+- **Decision:** The LLM judge fails loudly (`LLMJudgeError` / `SystemExit`) on a missing key, API error, or unparseable response, instead of falling back to the heuristic.
+  **Why:** A judge run that silently degrades to a different scoring method mid-run would produce numbers that look uniform but aren't comparable; a broken run should stop, not quietly contaminate the report.
+  **Alternative considered:** Falling back per-row to the heuristic on API failure; rejected because a report mixing both judges without flagging it would misrepresent the evidence.
+
+- **Decision:** Redesign the frontend around a dark "tactical telemetry" aesthetic with monospace data readouts, and add a client-side match-strength badge (weak/moderate/strong) computed from precedent similarity.
+  **Why:** The demo's original layout showed intent confidence and precedent similarity side by side with no visual distinction, which reads as if a low similarity score (e.g. 0.27) supports a high-confidence auto-handle decision. The badge makes the two numbers legibly independent without changing any backend logic.
+  **Alternative considered:** Leaving the presentation as-is and only fixing it in the backend `reason` string; rejected because the frontend can catch this for any reason string the backend generates, not just the current wording.

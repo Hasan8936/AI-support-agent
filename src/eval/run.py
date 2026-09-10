@@ -3,10 +3,12 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Sequence
+from typing import Any, Callable, Dict, Iterable, List, Sequence
 
 from src.draft.reply import get_intent_template, reference_reply_for_intent
+from src.eval.evaluator import cohen_kappa
 from src.ingest.threads import build_threads
 from src.pipeline import run_agent
 
@@ -319,6 +321,12 @@ def _median(values: Sequence[float]) -> float:
 
 
 def _judge_overall_for_row(row: Dict[str, Any], predicted_intent: str, draft_reply: str) -> Dict[str, int]:
+    """Deterministic offline fallback judge — free, fast, no network access.
+
+    This is a smoke-test heuristic, not calibration evidence: it cannot
+    detect fabricated or unsafe content, only keyword presence. Use
+    --judge llm (src/eval/llm_judge.py) for any real reply-quality claim.
+    """
     intent_match = 5 if predicted_intent == row["true_intent"] else 2
     grounded = 5 if any(token in draft_reply.lower() for token in ACTION_HINTS.get(row["true_intent"], ["review"])) else 4
     tone = 5 if any(token in draft_reply.lower() for token in ["sorry", "thank", "glad", "appreciate"]) else 4
@@ -333,32 +341,36 @@ def _judge_overall_for_row(row: Dict[str, Any], predicted_intent: str, draft_rep
     }
 
 
-def _compute_weighted_kappa(human: Sequence[int], llm: Sequence[int]) -> float:
-    if not human or len(human) != len(llm):
-        return 0.0
-    labels = list(range(1, 6))
-    counts = {a: {b: 0 for b in labels} for a in labels}
-    for h, l in zip(human, llm):
-        counts[h][l] = counts[h].get(l, 0) + 1
+def _make_judge_scorer(mode: str, provider: str = "anthropic") -> Callable[[Dict[str, Any], str, str], Dict[str, int]]:
+    """Return a (row, predicted_intent, draft_reply) -> scores callable for the chosen judge mode."""
+    if mode == "heuristic":
+        return _judge_overall_for_row
+    if mode == "llm":
+        from src.eval.llm_judge import LLMJudgeError, score_reply_with_llm
 
-    total = len(human)
-    po = 0.0
-    row_totals = {a: sum(counts[a].values()) for a in labels}
-    col_totals = {b: sum(counts[a].get(b, 0) for a in labels) for b in labels}
-    expected = 0.0
+        def _scorer(row: Dict[str, Any], predicted_intent: str, draft_reply: str) -> Dict[str, int]:
+            try:
+                return score_reply_with_llm(row["customer_msg"], predicted_intent, draft_reply, provider=provider)
+            except LLMJudgeError as exc:
+                raise SystemExit(f"LLM judge ({provider}) failed on row {row['row_id']}: {exc}") from exc
 
-    for a in labels:
-        for b in labels:
-            weight = 1 - abs(a - b) / 4
-            freq = counts[a].get(b, 0)
-            po += weight * freq
-            expected += weight * (row_totals[a] * col_totals[b] / total)
+        return _scorer
+    raise ValueError(f"Unknown judge mode: {mode!r} (expected 'heuristic' or 'llm')")
 
-    po /= total
-    pe = expected / total
-    if 1 - pe == 0:
-        return 0.0
-    return (po - pe) / (1 - pe)
+
+def _cached_scorer(scorer: Callable[[Dict[str, Any], str, str], Dict[str, int]]) -> Callable[[Dict[str, Any], str, str], Dict[str, int]]:
+    """Wrap a scorer so each row_id is only scored once, even if it appears in
+    both the full judge pass and the calibration subset — this halves LLM
+    judge API calls without changing any reported number."""
+    cache: Dict[str, Dict[str, int]] = {}
+
+    def _wrapped(row: Dict[str, Any], predicted_intent: str, draft_reply: str) -> Dict[str, int]:
+        row_id = row["row_id"]
+        if row_id not in cache:
+            cache[row_id] = scorer(row, predicted_intent, draft_reply)
+        return cache[row_id]
+
+    return _wrapped
 
 
 def make_predictions(golden_rows: Sequence[Dict[str, Any]], threads: Sequence[Dict[str, Any]], system: str = "full") -> List[Dict[str, Any]]:
@@ -482,14 +494,18 @@ def _escalation_report(gold_rows: Sequence[Dict[str, Any]], prediction_rows: Seq
     }
 
 
-def _judge_output_for_rows(gold_rows: Sequence[Dict[str, Any]], predictions: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+def _judge_output_for_rows(
+    gold_rows: Sequence[Dict[str, Any]],
+    predictions: Sequence[Dict[str, Any]],
+    scorer: Callable[[Dict[str, Any], str, str], Dict[str, int]] = _judge_overall_for_row,
+) -> Dict[str, Any]:
     prediction_map = {item["row_id"]: item for item in predictions}
     scored_rows: List[Dict[str, Any]] = []
     for row in gold_rows:
         pred = prediction_map.get(row["row_id"])
         if pred is None:
             continue
-        scores = _judge_overall_for_row(row, pred["predicted_intent"], pred["draft_reply"])
+        scores = scorer(row, pred["predicted_intent"], pred["draft_reply"])
         scored_rows.append({
             "row_id": row["row_id"],
             "judge_groundedness": scores["judge_groundedness"],
@@ -513,7 +529,12 @@ def _judge_output_for_rows(gold_rows: Sequence[Dict[str, Any]], predictions: Seq
     return summary
 
 
-def _calibration_report(gold_rows: Sequence[Dict[str, Any]], predictions: Sequence[Dict[str, Any]], calibration_path: Path) -> Dict[str, Any]:
+def _calibration_report(
+    gold_rows: Sequence[Dict[str, Any]],
+    predictions: Sequence[Dict[str, Any]],
+    calibration_path: Path,
+    scorer: Callable[[Dict[str, Any], str, str], Dict[str, int]] = _judge_overall_for_row,
+) -> Dict[str, Any]:
     calibration_rows = _load_csv(calibration_path)
     calibration_map = {item["row_id"]: item for item in calibration_rows}
     prediction_map = {item["row_id"]: item for item in predictions}
@@ -526,14 +547,14 @@ def _calibration_report(gold_rows: Sequence[Dict[str, Any]], predictions: Sequen
         pred = prediction_map.get(row["row_id"])
         if pred is None:
             continue
-        llm = _judge_overall_for_row(row, pred["predicted_intent"], pred["draft_reply"])["judge_overall"]
+        llm = scorer(row, pred["predicted_intent"], pred["draft_reply"])["judge_overall"]
         human = int(float(calibration_entry["human_overall"]))
         human_scores.append(human)
         llm_scores.append(llm)
 
     exact = sum(1 for h, l in zip(human_scores, llm_scores) if h == l) / max(len(human_scores), 1)
     adjacent = sum(1 for h, l in zip(human_scores, llm_scores) if abs(h - l) <= 1) / max(len(human_scores), 1)
-    weighted_kappa = _compute_weighted_kappa(human_scores, llm_scores)
+    weighted_kappa = cohen_kappa(human_scores, llm_scores)
     return {
         "n_rows": len(human_scores),
         "exact_match_pct": round(exact * 100, 2),
@@ -575,6 +596,7 @@ This submission includes a reproducible golden evaluation set for the AmazonHelp
 
 ## Reply quality summary
 
+- Judge: {judge_summary.get('judge_mode', 'heuristic')} ({'offline keyword rubric — smoke test only, not calibration evidence' if judge_summary.get('judge_mode', 'heuristic') == 'heuristic' else f"{judge_summary.get('judge_provider', 'anthropic')} API, rubric in eval/JUDGE_RUBRIC.md"})
 - Groundedness mean: {judge_summary['by_dimension']['judge_groundedness']['mean']:.3f}
 - Correctness mean: {judge_summary['by_dimension']['judge_correctness']['mean']:.3f}
 - Tone match mean: {judge_summary['by_dimension']['judge_tone_match']['mean']:.3f}
@@ -594,9 +616,18 @@ This regenerates the benchmark, evaluation outputs, and final report in one pass
     report_path.write_text(content, encoding="utf-8")
 
 
-def run_evaluation(golden_path: Path, calibration_path: Path, results_path: Path, eval_dir: Path, report_dir: Path) -> Dict[str, Any]:
+def run_evaluation(
+    golden_path: Path,
+    calibration_path: Path,
+    results_path: Path,
+    eval_dir: Path,
+    report_dir: Path,
+    judge_mode: str = "heuristic",
+    judge_provider: str = "anthropic",
+) -> Dict[str, Any]:
     eval_dir.mkdir(parents=True, exist_ok=True)
     report_dir.mkdir(parents=True, exist_ok=True)
+    scorer = _cached_scorer(_make_judge_scorer(judge_mode, judge_provider))
 
     golden_rows = _load_csv(golden_path)
     incomplete = [row["row_id"] for row in golden_rows if not row.get("true_intent") or not row.get("should_escalate") or "Generated from" in row.get("notes", "")]
@@ -623,8 +654,10 @@ def run_evaluation(golden_path: Path, calibration_path: Path, results_path: Path
 
     classification_report = _classification_report(golden_rows, predictions)
     escalation_report = _escalation_report(golden_rows, predictions)
-    judge_summary = _judge_output_for_rows(golden_rows, predictions)
-    calibration_report = _calibration_report(golden_rows, predictions, calibration_path)
+    judge_summary = _judge_output_for_rows(golden_rows, predictions, scorer)
+    judge_summary["judge_mode"] = judge_mode
+    judge_summary["judge_provider"] = judge_provider if judge_mode == "llm" else "n/a"
+    calibration_report = _calibration_report(golden_rows, predictions, calibration_path, scorer)
 
     (eval_dir / "classification_report.json").write_text(json.dumps(classification_report, indent=2), encoding="utf-8")
     (eval_dir / "escalation_report.json").write_text(json.dumps(escalation_report, indent=2), encoding="utf-8")
@@ -650,6 +683,22 @@ def main() -> None:
     parser.add_argument("--eval-dir", default="eval", type=Path, help="Directory for evaluation output JSON and markdown")
     parser.add_argument("--report-dir", default="report", type=Path, help="Directory for final report output")
     parser.add_argument("--rebuild", action="store_true", help="Deprecated: synthetic gold is intentionally not generated.")
+    parser.add_argument(
+        "--judge",
+        choices=["heuristic", "llm"],
+        default="heuristic",
+        help=(
+            "heuristic (default): free, offline, deterministic keyword rubric — good for a fast smoke test, "
+            "not calibration evidence. llm: calls an API per src/eval/llm_judge.py using the same "
+            "rubric; requires an API key and costs real API calls, but is the judge this assignment asks for."
+        ),
+    )
+    parser.add_argument(
+        "--judge-provider",
+        choices=["anthropic", "openai"],
+        default=os.environ.get("JUDGE_PROVIDER", "anthropic"),
+        help="Which API the LLM judge calls when --judge llm is set. Requires ANTHROPIC_API_KEY or OPENAI_API_KEY respectively.",
+    )
     args = parser.parse_args()
 
     if args.rebuild:
@@ -657,7 +706,7 @@ def main() -> None:
     if not args.golden.exists() or not args.calibration.exists():
         parser.error("Missing human-labelled golden set or judge calibration file. See data/golden/README.md.")
 
-    run_evaluation(args.golden, args.calibration, args.results, args.eval_dir, args.report_dir)
+    run_evaluation(args.golden, args.calibration, args.results, args.eval_dir, args.report_dir, judge_mode=args.judge, judge_provider=args.judge_provider)
 
 
 if __name__ == "__main__":

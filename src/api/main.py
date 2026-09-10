@@ -13,17 +13,28 @@ from src.pipeline import run_agent
 from src.security import resolve_repo_path
 
 app = FastAPI(title="AI Customer Support Agent Demo")
+
+# Base set of dev origins, plus the deployed frontend if the operator
+# configures FRONTEND_URL (avoids hardcoding a specific domain in code).
+_allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:4173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+_frontend_url = os.getenv("FRONTEND_URL")
+if _frontend_url:
+    _allowed_origins.append(_frontend_url.rstrip("/"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:4173",
-        "http://127.0.0.1:4173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://ai-support-agent-frontend.vercel.app",
-    ],
+    allow_origins=_allowed_origins,
+    # Also allow Vercel preview-deployment URLs for this project
+    # (e.g. ai-support-agent-frontend-<hash>-<team>.vercel.app), so
+    # preview builds don't need a CORS update on every deploy.
+    allow_origin_regex=r"https://ai-support-agent-frontend.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

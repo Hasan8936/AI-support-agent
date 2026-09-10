@@ -1,11 +1,15 @@
 import csv
+import os
 from pathlib import Path
+
+import pytest
 
 from src.classify.classifier import classify_message
 from src.draft.reply import get_intent_template
 from src.escalate.escalator import decide_escalation
 from src.ingest.threads import build_threads
-from src.eval.evaluator import evaluate_predictions
+from src.eval.evaluator import cohen_kappa, evaluate_predictions
+from src.eval.llm_judge import LLMJudgeError, _parse_scores, score_reply_with_llm
 
 
 def test_build_threads_from_sample_data():
@@ -43,3 +47,34 @@ def test_evaluator_reports_numbers():
 def test_shared_intent_template_avoids_drift():
     assert "secure channels" in get_intent_template("fraud_or_safety").lower()
     assert "refund" in get_intent_template("refund_request").lower()
+
+
+def test_cohen_kappa_perfect_agreement_is_one():
+    scores = [1, 2, 3, 4, 5, 3, 2]
+    assert cohen_kappa(scores, scores) == pytest.approx(1.0)
+
+
+def test_cohen_kappa_handles_mismatched_lengths():
+    assert cohen_kappa([1, 2], [1]) == 0.0
+
+
+def test_llm_judge_parses_valid_response():
+    raw = '{"groundedness": 4, "correctness": 5, "tone_match": 5, "actionability": 4, "rationale": "ok"}'
+    scores = _parse_scores(raw)
+    assert scores == {"groundedness": 4, "correctness": 5, "tone_match": 5, "actionability": 4}
+
+
+def test_llm_judge_rejects_out_of_range_score():
+    with pytest.raises(LLMJudgeError):
+        _parse_scores('{"groundedness": 9, "correctness": 5, "tone_match": 5, "actionability": 4}')
+
+
+def test_llm_judge_rejects_non_json_response():
+    with pytest.raises(LLMJudgeError):
+        _parse_scores("I decline to answer in JSON.")
+
+
+def test_llm_judge_fails_loudly_without_api_key(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    with pytest.raises(LLMJudgeError, match="ANTHROPIC_API_KEY is not set"):
+        score_reply_with_llm("My package is late.", "delivery_delay", "Sorry for the delay.")

@@ -33,13 +33,22 @@ For the optional inspectable demo, run `uvicorn src.api.main:app --reload --port
 4. Run the evaluator:
 
    ```powershell
-   python -m src.eval.run --golden data/golden/golden_set.csv --calibration data/golden/judge_calibration.csv
+   python -m src.eval.run --golden data/golden/golden_set.csv --calibration data/golden/judge_calibration.csv --judge heuristic
    ```
+
+   `--judge heuristic` (default) is a free, offline, deterministic keyword rubric — useful for a fast sanity check, but it is **not** calibration evidence. For an actual reply-quality claim, copy `.env.example` to `.env`, set `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY`, and run with `--judge llm` instead:
+
+   ```powershell
+   python -m src.eval.run --golden data/golden/golden_set.csv --calibration data/golden/judge_calibration.csv --judge llm --judge-provider anthropic
+   # or: --judge-provider openai (requires OPENAI_API_KEY instead)
+   ```
+
+   This calls the chosen provider's API per row using the rubric in [eval/JUDGE_RUBRIC.md](eval/JUDGE_RUBRIC.md) (`src/eval/llm_judge.py`), and fails loudly — it does not silently fall back to the heuristic or to the other provider — if the relevant API key is missing or a response can't be parsed as a valid score. All modes write the same `judge_calibration.json` shape (exact match %, adjacent match %, weighted Cohen's kappa via `src.eval.evaluator.cohen_kappa`), so results are directly comparable across judges and against the offline baseline.
 
 It writes per-intent classification metrics, reply rubric scores, judge–human agreement, escalation precision/recall plus false-auto-handle rate, a three-system comparison table, and `report/REPORT.md`.
 
 ## Scope and limitations
 
-The core model is intentionally deterministic and local: keyword intent features plus TF-IDF-style lexical retrieval. This makes the demo cheap and explainable, but it is not the PRD’s proposed LLM classifier or semantic embedding index. `src/eval/judge.py` is a transparent offline rubric fallback, not an LLM-as-judge; replace it with an independently prompted API judge before making a reply-quality claim.
+The core model is intentionally deterministic and local: keyword intent features plus TF-IDF-style lexical retrieval. This makes the demo cheap and explainable, but it is not the PRD’s proposed LLM classifier or semantic embedding index. The default `--judge heuristic` (`src/eval/judge.py` / `_judge_overall_for_row` in `src/eval/run.py`) is a transparent offline rubric fallback, not an LLM-as-judge; use `--judge llm` (`src/eval/llm_judge.py`) for an independently prompted API judge before making a reply-quality claim.
 
 No live Twitter action, credentials, or full-dataset processing is included. Dataset attribution: [Kaggle / thoughtvector](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter).

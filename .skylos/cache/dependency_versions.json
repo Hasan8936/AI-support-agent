@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "statuses": {
+    "PyPI:pyyaml:6.0.2": "present",
+    "PyPI:pandas:2.2.2": "present",
+    "PyPI:numpy:2.2.1": "present",
+    "PyPI:pytest:8.3.2": "present",
+    "PyPI:fastapi:0.115.0": "present",
+    "PyPI:uvicorn:0.30.6": "present",
+    "npm:vite:<package-only>": "present",
+    "npm:@modelcontextprotocol/sdk:<package-only>": "present",
+    "npm:zod:<package-only>": "present",
+    "PyPI:pydantic:2.11.7": "present",
+    "PyPI:pytest:8.4.2": "present"
+  }
+}

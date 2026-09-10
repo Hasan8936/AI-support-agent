@@ -1,4 +1,5 @@
 import csv
+import time
 from pathlib import Path
 
 from src.classify.classifier import classify_message
@@ -12,6 +13,54 @@ def test_build_threads_from_sample_data():
     rows = build_threads(Path("data/raw/support_tweets.csv"), "AmazonHelp")
     assert rows
     assert any(r["customer_initial_msg"] for r in rows)
+
+
+def test_build_threads_accepts_external_csv_paths(tmp_path):
+    source = Path("data/raw/support_tweets.csv")
+    external = tmp_path / "dataset" / "wcs.csv"
+    external.parent.mkdir(parents=True, exist_ok=True)
+    external.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+
+    rows = build_threads(external, "AmazonHelp")
+    assert rows
+    assert any(r["customer_initial_msg"] for r in rows)
+
+
+def test_build_threads_handles_large_csv_without_quadratic_slowdown(tmp_path):
+    csv_path = tmp_path / "large_twcs.csv"
+    rows = []
+    for i in range(1, 3501):
+        customer_id = f"c{i}"
+        brand_id = f"b{i}"
+        rows.append({
+            "tweet_id": customer_id,
+            "author_id": "customer_user",
+            "inbound": "True",
+            "created_at": "Tue Oct 31 22:10:47 +0000 2017",
+            "text": f"Need support for issue {i}",
+            "response_tweet_id": brand_id,
+            "in_response_to_tweet_id": "",
+        })
+        rows.append({
+            "tweet_id": brand_id,
+            "author_id": "AmazonHelp",
+            "inbound": "False",
+            "created_at": "Tue Oct 31 22:12:47 +0000 2017",
+            "text": f"We have resolved issue {i}",
+            "response_tweet_id": "",
+            "in_response_to_tweet_id": customer_id,
+        })
+    with csv_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["tweet_id", "author_id", "inbound", "created_at", "text", "response_tweet_id", "in_response_to_tweet_id"])
+        writer.writeheader()
+        writer.writerows(rows)
+
+    start = time.perf_counter()
+    result = build_threads(csv_path, "AmazonHelp")
+    elapsed = time.perf_counter() - start
+
+    assert len(result) == 3500
+    assert elapsed < 5.0
 
 
 def test_classify_message_uses_taxonomy():

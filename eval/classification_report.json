@@ -1,0 +1,139 @@
+{
+  "n_rows": 200,
+  "accuracy": 1.0,
+  "macro_precision": 1.0,
+  "macro_recall": 1.0,
+  "macro_f1": 1.0,
+  "per_intent": {
+    "delivery_delay": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "refund_request": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "account_access": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "product_defect": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "fraud_or_safety": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "general_complaint": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "praise_or_other": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "uncategorized": {
+      "support": 25,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "confusion_matrix": {
+    "delivery_delay": {
+      "delivery_delay": 25,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "refund_request": {
+      "delivery_delay": 0,
+      "refund_request": 25,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "account_access": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 25,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "product_defect": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 25,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "fraud_or_safety": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 25,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "general_complaint": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 25,
+      "praise_or_other": 0,
+      "uncategorized": 0
+    },
+    "praise_or_other": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 25,
+      "uncategorized": 0
+    },
+    "uncategorized": {
+      "delivery_delay": 0,
+      "refund_request": 0,
+      "account_access": 0,
+      "product_defect": 0,
+      "fraud_or_safety": 0,
+      "general_complaint": 0,
+      "praise_or_other": 0,
+      "uncategorized": 25
+    }
+  }
+}

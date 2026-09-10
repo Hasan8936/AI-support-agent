@@ -61,3 +61,17 @@
 - **Decision:** Store the run outputs under `results/` rather than embedding them in the repo root.
   **Why:** It keeps the generated artifacts separate from the source code and matches the repository conventions.
   **Alternative considered:** Writing results directly into the root or README; rejected as less organized.
+
+## Trust and evidence boundary
+
+- **Decision:** Fail closed when the evaluator sees synthetic or incomplete golden labels.
+  **Why:** This is the repository’s core integrity safeguard, preventing a project from claiming metrics without real evidence.
+  **Alternative considered:** Accepting placeholder labels and printing attractive numbers; rejected because it would misrepresent the system.
+
+- **Decision:** Keep the benchmark reproducible and local rather than hiding results behind a remote service.
+  **Why:** Reproducibility is necessary for auditability and for any claim that the repository’s results reflect the code actually checked into source control.
+  **Alternative considered:** Remote-only evaluation and opaque dashboards; rejected because they would not be auditable in a repo submission.
+
+- **Decision:** Separate the project’s verified runnable pipeline from the final human-annotation requirement.
+  **Why:** The code can be verified and the evaluation harness can be exercised while the final label set remains a human process, which keeps evidence honest.
+  **Alternative considered:** Pretending the provisional labels are the same as adjudicated labels; rejected because it would blur the evidence boundary.

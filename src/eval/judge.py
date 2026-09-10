@@ -2,6 +2,12 @@
 
 The rubric and the calibration file are intentionally versioned so quality
 claims can be audited rather than treated as an opaque model opinion.
+
+Status: this module is currently unused by the evaluation harness
+(src/eval/run.py has its own copy of this same heuristic, `_judge_overall_for_row`,
+selected by default). For the real, API-backed judge required by the
+assignment brief, see `src/eval/llm_judge.py` and run the evaluator with
+`--judge llm`.
 """
 from __future__ import annotations
 

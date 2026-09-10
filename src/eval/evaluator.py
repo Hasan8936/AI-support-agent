@@ -1,7 +1,41 @@
 from __future__ import annotations
 
 from collections import Counter
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Sequence
+
+
+def cohen_kappa(human: Sequence[int], llm: Sequence[int], *, max_label: int = 5) -> float:
+    """Linear-weighted Cohen's kappa between two raters on a 1..max_label scale.
+
+    Used to report human-vs-judge agreement on the calibration subset, per
+    docs/JUDGE_RUBRIC.md. A weighted kappa treats near-misses (a 4 vs a 5)
+    as less severe than a large disagreement (a 1 vs a 5), which fits a
+    1-5 Likert rubric better than plain (unweighted) agreement.
+    """
+    if not human or len(human) != len(llm):
+        return 0.0
+    labels = list(range(1, max_label + 1))
+    counts = {a: {b: 0 for b in labels} for a in labels}
+    for h, l in zip(human, llm):
+        counts[h][l] = counts[h].get(l, 0) + 1
+
+    total = len(human)
+    row_totals = {a: sum(counts[a].values()) for a in labels}
+    col_totals = {b: sum(counts[a].get(b, 0) for a in labels) for b in labels}
+
+    observed = 0.0
+    expected = 0.0
+    for a in labels:
+        for b in labels:
+            weight = 1 - abs(a - b) / (max_label - 1)
+            observed += weight * counts[a].get(b, 0)
+            expected += weight * (row_totals[a] * col_totals[b] / total)
+
+    observed /= total
+    expected /= total
+    if 1 - expected == 0:
+        return 0.0
+    return (observed - expected) / (1 - expected)
 
 
 def evaluate_predictions(predictions: List[Dict[str, Any]], gold: List[Dict[str, Any]]) -> Dict[str, Any]:

@@ -14,76 +14,111 @@ const examples = [
     'My item arrived damaged and I need support.'
 ];
 
-function createTextElement(tagName, text, className) {
-    const el = document.createElement(tagName);
-    el.textContent = text;
-    if (className) el.className = className;
-    return el;
+// Similarity thresholds for the honest match-strength badge. These are
+// deliberately conservative for a TF-IDF/keyword retrieval system: a 0.3
+// similarity is not "strong" evidence, even if the intent classifier is
+// confident about something else entirely. Keeping this label decoupled
+// from intent confidence avoids the two numbers being read as if they
+// support each other when they measure different things.
+const SIMILARITY_THRESHOLDS = { strong: 0.55, moderate: 0.3 };
+
+function matchStrength(similarity) {
+    const value = Number(similarity);
+    if (Number.isNaN(value)) return null;
+    if (value >= SIMILARITY_THRESHOLDS.strong) return 'strong';
+    if (value >= SIMILARITY_THRESHOLDS.moderate) return 'moderate';
+    return 'weak';
+}
+
+function el(tagName, className, text) {
+    const node = document.createElement(tagName);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
 }
 
 function renderLoading() {
-    output.replaceChildren(createTextElement('div', 'Running analysis...', 'card result-card'));
-}
-
-function renderError(message) {
-    const card = document.createElement('div');
-    card.className = 'card result-card';
-    const error = document.createElement('div');
-    error.className = 'error';
-    error.textContent = message;
-    card.appendChild(error);
+    const card = el('article', 'result-card');
+    card.appendChild(el('div', 'loading-line', 'RUNNING ANALYSIS'));
     output.replaceChildren(card);
 }
 
+function renderError(message) {
+    const card = el('article', 'result-card');
+    card.appendChild(el('div', 'error', message));
+    output.replaceChildren(card);
+}
+
+function fieldRow(key, value) {
+    const row = el('div', 'field-row');
+    row.appendChild(el('span', 'field-key', key));
+    row.appendChild(el('span', 'field-val', value));
+    return row;
+}
+
 function renderResult(data) {
-    const decisionClass = data.decision === 'auto_handle' ? 'auto' : 'escalate';
-    const resultCard = document.createElement('article');
-    resultCard.className = 'result-card';
+    const isAuto = data.decision === 'auto_handle';
+    const decisionClass = isAuto ? 'auto' : 'escalate';
+    const confidencePct = Math.round((Number(data.confidence) || 0) * 100);
 
-    const intentHeading = createTextElement('h3', 'Intent', '');
-    const metricRow = document.createElement('div');
-    metricRow.className = 'metric-row';
-    metricRow.appendChild(createTextElement('span', data.intent || '', 'value'));
-    const pill = createTextElement('span', data.decision || '', `pill ${decisionClass}`);
-    metricRow.appendChild(pill);
+    // --- decision card ---
+    const decisionCard = el('article', 'result-card');
+    decisionCard.appendChild(el('h3', 'panel-label', 'Routing Decision'));
 
-    const confidenceRow = document.createElement('div');
-    confidenceRow.className = 'metric-row';
-    confidenceRow.appendChild(createTextElement('span', 'Confidence', ''));
-    confidenceRow.appendChild(createTextElement('span', String(data.confidence || ''), 'value'));
+    const readout = el('div', 'decision-readout');
+    readout.appendChild(el('span', `status-light ${decisionClass}`));
 
-    const reasonRow = document.createElement('div');
-    reasonRow.className = 'metric-row';
-    reasonRow.appendChild(createTextElement('span', 'Reason', ''));
-    reasonRow.appendChild(createTextElement('span', data.reason || '', ''));
+    const copy = el('div', 'decision-copy');
+    copy.appendChild(el('span', 'decision-intent', data.intent || 'UNKNOWN'));
+    copy.appendChild(el('span', `decision-status ${decisionClass}`, isAuto ? 'AUTO-HANDLE' : 'ESCALATE TO HUMAN'));
+    readout.appendChild(copy);
 
-    resultCard.append(intentHeading, metricRow, confidenceRow, reasonRow);
+    const meter = el('div', 'confidence-meter');
+    meter.appendChild(el('span', 'confidence-value', `${confidencePct}%`));
+    const bar = el('div', 'meter-bar');
+    const fill = el('span');
+    fill.style.width = `${Math.min(100, Math.max(0, confidencePct))}%`;
+    bar.appendChild(fill);
+    meter.appendChild(bar);
+    meter.appendChild(el('span', 'meter-caption', 'Intent Confidence'));
+    readout.appendChild(meter);
 
-    const precedentCard = document.createElement('article');
-    precedentCard.className = 'result-card';
-    const precedentHeading = createTextElement('h3', 'Precedents', '');
-    const list = document.createElement('ul');
-    list.className = 'precedent-list';
-    (data.precedents || []).forEach((item) => {
-        const li = document.createElement('li');
-        const msg = document.createElement('div');
-        msg.textContent = item.customer_msg || '';
-        const sim = document.createElement('span');
-        sim.className = 'similarity';
-        sim.textContent = `Similarity: ${item.similarity}`;
-        li.append(msg, sim);
+    decisionCard.appendChild(readout);
+    decisionCard.appendChild(fieldRow('REASON', data.reason || '—'));
+
+    // --- precedents card ---
+    const precedentCard = el('article', 'result-card');
+    const precedents = data.precedents || [];
+    const topStrength = precedents.length ? matchStrength(precedents[0].similarity) : null;
+
+    const precedentHeading = el('h3', 'panel-label', 'Retrieved Precedents');
+    if (topStrength) {
+        precedentHeading.appendChild(el('span', `match-strength ${topStrength}`, `${topStrength} match`));
+    }
+    precedentCard.appendChild(precedentHeading);
+
+    const list = el('ul', 'precedent-list');
+    precedents.forEach((item) => {
+        const li = el('li');
+        li.appendChild(el('div', 'precedent-msg', item.customer_msg || ''));
+        const sim = el('span', 'similarity');
+        const simValue = Number(item.similarity);
+        sim.textContent = 'Similarity: ';
+        sim.appendChild(el('span', 'num', Number.isNaN(simValue) ? String(item.similarity) : simValue.toFixed(3)));
+        li.appendChild(sim);
         list.appendChild(li);
     });
-    precedentCard.append(precedentHeading, list);
+    if (!precedents.length) {
+        list.appendChild(el('li', '', 'No precedents retrieved.'));
+    }
+    precedentCard.appendChild(list);
 
-    const replyCard = document.createElement('article');
-    replyCard.className = 'result-card';
-    replyCard.appendChild(createTextElement('h3', 'Draft reply', ''));
-    const draft = document.createElement('p');
-    draft.textContent = data.draft_reply || '';
-    replyCard.appendChild(draft);
+    // --- draft reply card ---
+    const replyCard = el('article', 'result-card');
+    replyCard.appendChild(el('h3', 'panel-label', 'Draft Reply'));
+    replyCard.appendChild(el('p', 'draft-reply', data.draft_reply || ''));
 
-    output.replaceChildren(resultCard, precedentCard, replyCard);
+    output.replaceChildren(decisionCard, precedentCard, replyCard);
 }
 
 async function runAgent() {

@@ -1,4 +1,5 @@
 # AmazonHelp Support Agent
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/73bd829c-e2bd-4dbd-9578-e43263d41ca9" />
 
 An offline-first, auditable support-routing pipeline for real AmazonHelp Twitter conversations. Built on the [Customer Support on Twitter](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter) dataset (2.8 M tweets).
 

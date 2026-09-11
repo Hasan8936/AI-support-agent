@@ -8,22 +8,23 @@ This submission includes a reproducible golden evaluation set for the AmazonHelp
 
 - Accuracy: 1.0000
 - Macro F1: 1.0000
-- Escalation precision: 0.0000
-- Escalation recall: 0.0000
-- Escalation F1: 0.0000
+- Escalation precision: 1.0000
+- Escalation recall: 1.0000
+- Escalation F1: 1.0000
 - False auto-handle rate: 0.0000
 - False escalate rate: 0.0000
-- Human–LLM agreement exact match: 20.00%
-- Human–LLM agreement adjacent match: 100.00%
+- Human–LLM agreement exact match: 37.50%
+- Human–LLM agreement adjacent match: 95.00%
 - Weighted kappa: 0.0000
 
 ## Reply quality summary
 
-- Groundedness mean: 4.700
+- Judge: heuristic (offline keyword rubric — smoke test only, not calibration evidence)
+- Groundedness mean: 4.375
 - Correctness mean: 5.000
 - Tone match mean: 5.000
-- Actionability mean: 4.400
-- Overall mean: 4.700
+- Actionability mean: 3.750
+- Overall mean: 4.375
 
 ## Reproducible submission path
 

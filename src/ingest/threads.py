@@ -67,6 +67,7 @@ def build_threads(csv_path: str | Path, brand: str = "AmazonHelp") -> List[Dict[
             "customer_initial_msg": message,
             "customer_msg": message,
             "agent_final_reply": _clean_text(final.get("text")),
+            "intent": _clean_text(customer.get("intent")),
             "num_turns": 2,
             "has_resolution": True,
         })

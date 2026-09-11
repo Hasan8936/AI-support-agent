@@ -377,7 +377,7 @@ def make_predictions(golden_rows: Sequence[Dict[str, Any]], threads: Sequence[Di
     rows: List[Dict[str, Any]] = []
     for index, row in enumerate(golden_rows, start=1):
         message = row["customer_msg"]
-        outcome = run_agent(message, list(threads), system, golden_rows)
+        outcome = run_agent(message, threads, system, golden_rows)
         rows.append(
             {
                 "row_id": row["row_id"],
@@ -467,14 +467,16 @@ def _escalation_report(gold_rows: Sequence[Dict[str, Any]], prediction_rows: Seq
             continue
         expected = bool(gold.get("should_escalate", False))
         decision = pred.get("escalation_decision", "auto_handle")
+        # Normalise both spellings the pipeline has used historically.
+        decision_normalised = "escalate" if decision in ("escalate", "escalate_to_human") else "auto_handle"
         actual_label = "escalate" if expected else "auto_handle"
-        if decision == "escalate" and expected:
+        if decision_normalised == "escalate" and expected:
             true_positive += 1
             confusion["escalate"]["escalate"] += 1
-        elif decision == "escalate" and not expected:
+        elif decision_normalised == "escalate" and not expected:
             false_positive += 1
             confusion["auto_handle"]["escalate"] += 1
-        elif decision == "auto_handle" and expected:
+        elif decision_normalised == "auto_handle" and expected:
             false_negative += 1
             confusion["escalate"]["auto_handle"] += 1
         else:

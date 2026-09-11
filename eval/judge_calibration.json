@@ -1,6 +1,6 @@
 {
   "n_rows": 40,
-  "exact_match_pct": 20.0,
-  "adjacent_match_pct": 100.0,
+  "exact_match_pct": 37.5,
+  "adjacent_match_pct": 95.0,
   "weighted_kappa": 0.0
 }

@@ -2,8 +2,8 @@
   "n_rows": 200,
   "by_dimension": {
     "judge_groundedness": {
-      "mean": 4.7,
-      "median": 5.0,
+      "mean": 4.375,
+      "median": 4.0,
       "min": 4.0,
       "max": 5.0
     },
@@ -20,21 +20,21 @@
       "max": 5.0
     },
     "judge_actionability": {
-      "mean": 4.4,
-      "median": 5.0,
+      "mean": 3.75,
+      "median": 3.0,
       "min": 3.0,
       "max": 5.0
     },
     "judge_overall": {
-      "mean": 4.7,
-      "median": 5.0,
+      "mean": 4.375,
+      "median": 4.0,
       "min": 4.0,
       "max": 5.0
     }
   },
   "rows": [
     {
-      "row_id": "gold_001",
+      "row_id": "gold_0001",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -42,7 +42,15 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_002",
+      "row_id": "gold_0002",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0003",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -50,15 +58,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_003",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_004",
+      "row_id": "gold_0004",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -66,7 +66,23 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_005",
+      "row_id": "gold_0005",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0006",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0007",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -74,7 +90,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_006",
+      "row_id": "gold_0008",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -82,7 +98,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_007",
+      "row_id": "gold_0009",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -90,7 +106,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_008",
+      "row_id": "gold_0010",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -98,7 +114,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_009",
+      "row_id": "gold_0011",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -106,31 +122,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_010",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_011",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_012",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_013",
+      "row_id": "gold_0012",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -138,23 +130,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_014",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_015",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_016",
+      "row_id": "gold_0013",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -162,31 +138,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_017",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_018",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_019",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_020",
+      "row_id": "gold_0014",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -194,7 +146,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_021",
+      "row_id": "gold_0015",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -202,7 +154,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_022",
+      "row_id": "gold_0016",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -210,15 +162,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_023",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_024",
+      "row_id": "gold_0017",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -226,7 +170,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_025",
+      "row_id": "gold_0018",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -234,23 +178,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_026",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_027",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_028",
+      "row_id": "gold_0019",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -258,7 +186,15 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_029",
+      "row_id": "gold_0020",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0021",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -266,7 +202,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_030",
+      "row_id": "gold_0022",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -274,7 +210,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_031",
+      "row_id": "gold_0023",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -282,7 +218,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_032",
+      "row_id": "gold_0024",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -290,7 +226,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_033",
+      "row_id": "gold_0025",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -298,23 +234,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_034",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_035",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_036",
+      "row_id": "gold_0026",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -322,31 +242,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_037",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_038",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_039",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_040",
+      "row_id": "gold_0027",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -354,7 +250,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_041",
+      "row_id": "gold_0028",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -362,7 +258,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_042",
+      "row_id": "gold_0029",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -370,7 +266,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_043",
+      "row_id": "gold_0030",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -378,15 +274,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_044",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_045",
+      "row_id": "gold_0031",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -394,23 +282,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_046",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_047",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_048",
+      "row_id": "gold_0032",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -418,39 +290,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_049",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_050",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_051",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_052",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_053",
+      "row_id": "gold_0033",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -458,23 +298,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_054",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_055",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_056",
+      "row_id": "gold_0034",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -482,63 +306,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_057",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_058",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_059",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_060",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_061",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_062",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_063",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_064",
+      "row_id": "gold_0035",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -546,7 +314,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_065",
+      "row_id": "gold_0036",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -554,7 +322,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_066",
+      "row_id": "gold_0037",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -562,23 +330,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_067",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_068",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_069",
+      "row_id": "gold_0038",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -586,23 +338,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_070",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_071",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_072",
+      "row_id": "gold_0039",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -610,7 +346,23 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_073",
+      "row_id": "gold_0040",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0041",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0042",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -618,31 +370,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_074",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_075",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_076",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_077",
+      "row_id": "gold_0043",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -650,23 +378,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_078",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_079",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_080",
+      "row_id": "gold_0044",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -674,7 +386,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_081",
+      "row_id": "gold_0045",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -682,7 +394,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_082",
+      "row_id": "gold_0046",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -690,7 +402,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_083",
+      "row_id": "gold_0047",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -698,7 +410,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_084",
+      "row_id": "gold_0048",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -706,7 +418,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_085",
+      "row_id": "gold_0049",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -714,23 +426,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_086",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_087",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_088",
+      "row_id": "gold_0050",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -738,63 +434,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_089",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_090",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_091",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_092",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_093",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_094",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_095",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_096",
+      "row_id": "gold_0051",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -802,39 +442,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_097",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_098",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_099",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_100",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_101",
+      "row_id": "gold_0052",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -842,23 +450,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_102",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_103",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_104",
+      "row_id": "gold_0053",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -866,63 +458,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_105",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_106",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_107",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_108",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_109",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_110",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_111",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_112",
+      "row_id": "gold_0054",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -930,7 +466,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_113",
+      "row_id": "gold_0055",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -938,31 +474,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_114",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_115",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_116",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_117",
+      "row_id": "gold_0056",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -970,7 +482,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_118",
+      "row_id": "gold_0057",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -978,15 +490,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_119",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_120",
+      "row_id": "gold_0058",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -994,7 +498,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_121",
+      "row_id": "gold_0059",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1002,7 +506,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_122",
+      "row_id": "gold_0060",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1010,7 +514,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_123",
+      "row_id": "gold_0061",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1018,7 +522,15 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_124",
+      "row_id": "gold_0062",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0063",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1026,7 +538,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_125",
+      "row_id": "gold_0064",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1034,55 +546,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_126",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_127",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_128",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_129",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_130",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_131",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_132",
+      "row_id": "gold_0065",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1090,7 +554,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_133",
+      "row_id": "gold_0066",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1098,7 +562,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_134",
+      "row_id": "gold_0067",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1106,15 +570,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_135",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_136",
+      "row_id": "gold_0068",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1122,39 +578,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_137",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_138",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_139",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_140",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_141",
+      "row_id": "gold_0069",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1162,23 +586,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_142",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_143",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_144",
+      "row_id": "gold_0070",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1186,7 +594,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_145",
+      "row_id": "gold_0071",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1194,23 +602,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_146",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_147",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_148",
+      "row_id": "gold_0072",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1218,7 +610,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_149",
+      "row_id": "gold_0073",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1226,47 +618,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_150",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_151",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_152",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_153",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_154",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_155",
+      "row_id": "gold_0074",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1274,15 +626,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_156",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_157",
+      "row_id": "gold_0075",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1290,23 +634,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_158",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_159",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_160",
+      "row_id": "gold_0076",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1314,7 +642,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_161",
+      "row_id": "gold_0077",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1322,7 +650,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_162",
+      "row_id": "gold_0078",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1330,7 +658,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_163",
+      "row_id": "gold_0079",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1338,7 +666,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_164",
+      "row_id": "gold_0080",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1346,7 +674,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_165",
+      "row_id": "gold_0081",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1354,7 +682,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_166",
+      "row_id": "gold_0082",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1362,15 +690,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_167",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_168",
+      "row_id": "gold_0083",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1378,31 +698,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_169",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_170",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_171",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_172",
+      "row_id": "gold_0084",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1410,7 +706,15 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_173",
+      "row_id": "gold_0085",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0086",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1418,23 +722,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_174",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_175",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_176",
+      "row_id": "gold_0087",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1442,7 +730,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_177",
+      "row_id": "gold_0088",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1450,31 +738,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_178",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_179",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_180",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_181",
+      "row_id": "gold_0089",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1482,63 +746,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_182",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_183",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_184",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_185",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_186",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_187",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_188",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_189",
+      "row_id": "gold_0090",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1546,23 +754,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_190",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_191",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_192",
+      "row_id": "gold_0091",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1570,7 +762,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_193",
+      "row_id": "gold_0092",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1578,7 +770,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_194",
+      "row_id": "gold_0093",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1586,7 +778,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_195",
+      "row_id": "gold_0094",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1594,15 +786,7 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_196",
-      "judge_groundedness": 5,
-      "judge_correctness": 5,
-      "judge_tone_match": 5,
-      "judge_actionability": 5,
-      "judge_overall": 5
-    },
-    {
-      "row_id": "gold_197",
+      "row_id": "gold_0095",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1610,7 +794,7 @@
       "judge_overall": 4
     },
     {
-      "row_id": "gold_198",
+      "row_id": "gold_0096",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1618,7 +802,31 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_199",
+      "row_id": "gold_0097",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0098",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0099",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0100",
       "judge_groundedness": 5,
       "judge_correctness": 5,
       "judge_tone_match": 5,
@@ -1626,12 +834,806 @@
       "judge_overall": 5
     },
     {
-      "row_id": "gold_200",
+      "row_id": "gold_0101",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0102",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0103",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0104",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0105",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0106",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0107",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0108",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0109",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0110",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0111",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0112",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0113",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0114",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0115",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0116",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0117",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0118",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0119",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0120",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0121",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0122",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0123",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0124",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0125",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0126",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0127",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0128",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0129",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0130",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0131",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0132",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0133",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0134",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0135",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0136",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0137",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0138",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0139",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0140",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0141",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0142",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0143",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0144",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0145",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0146",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0147",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0148",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0149",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0150",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0151",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0152",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0153",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0154",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0155",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0156",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0157",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0158",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0159",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0160",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0161",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0162",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0163",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0164",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0165",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0166",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0167",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0168",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0169",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0170",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0171",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0172",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0173",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0174",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0175",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0176",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0177",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0178",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0179",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0180",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0181",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0182",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0183",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0184",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0185",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0186",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0187",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0188",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0189",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0190",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0191",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0192",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0193",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0194",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0195",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0196",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0197",
+      "judge_groundedness": 5,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 5,
+      "judge_overall": 5
+    },
+    {
+      "row_id": "gold_0198",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0199",
+      "judge_groundedness": 4,
+      "judge_correctness": 5,
+      "judge_tone_match": 5,
+      "judge_actionability": 3,
+      "judge_overall": 4
+    },
+    {
+      "row_id": "gold_0200",
       "judge_groundedness": 4,
       "judge_correctness": 5,
       "judge_tone_match": 5,
       "judge_actionability": 3,
       "judge_overall": 4
     }
-  ]
+  ],
+  "judge_mode": "heuristic",
+  "judge_provider": "n/a"
 }

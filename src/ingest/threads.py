@@ -72,3 +72,31 @@ def build_threads(csv_path: str | Path, brand: str = "AmazonHelp") -> List[Dict[
             "has_resolution": True,
         })
     return rows
+
+
+def build_knowledge_threads(csv_path: str | Path, brand: str) -> List[Dict[str, Any]]:
+    """Load curated product FAQ rows using the same retrieval shape as reconstructed threads."""
+    csv_file = resolve_repo_path(csv_path, allow_external=True)
+    if not csv_file.exists() or not csv_file.is_file() or csv_file.is_symlink():
+        raise FileNotFoundError(f"Knowledge file not found: {csv_file}")
+    with csv_file.open("r", encoding="utf-8", newline="") as handle:
+        raw = list(csv.DictReader(handle))
+    rows: List[Dict[str, Any]] = []
+    for row in raw:
+        question = _clean_text(row.get("customer_initial_msg"))
+        answer = _clean_text(row.get("agent_final_reply"))
+        if not question or not answer:
+            continue
+        rows.append({
+            "thread_id": _clean_text(row.get("thread_id")),
+            "brand": brand,
+            "customer_initial_msg": question,
+            "customer_msg": question,
+            "agent_final_reply": answer,
+            "intent": _clean_text(row.get("intent")) or "general_complaint",
+            "num_turns": 2,
+            "has_resolution": True,
+        })
+    if not rows:
+        raise ValueError(f"Knowledge file contains no usable rows: {csv_file}")
+    return rows

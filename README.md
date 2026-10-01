@@ -297,3 +297,26 @@ scripts/
 The classifier is deterministic and local — no API calls, no GPU. This makes behavior testable and reproducible but means it handles curated test cases better than noisy real Twitter traffic. Retrieval is lexical TF-IDF, not semantic embeddings. No live Twitter credentials, no multi-brand support, no production hardening.
 
 Dataset: [Kaggle / thoughtvector](https://www.kaggle.com/datasets/thoughtvector/customer-support-on-twitter). twcs.csv is not redistributed; `data/raw/support_tweets.csv` is a 3 000-thread derived extract committed to the repo.
+
+## Smart Job Tracker escalation notifications
+
+When the API routes a Smart Job Tracker conversation to human review, it now returns a safe `fallback` object containing an event ID and customer-facing message. If SMTP is configured, it also sends an email to the support team. Notification failures never convert the chatbot response into an API error.
+
+Set these Render environment variables on the `AI-support-agent` service:
+
+```text
+SUPPORT_ESCALATION_EMAIL=support@example.com
+SUPPORT_ESCALATION_CONTACT=Support team
+SUPPORT_ESCALATION_FALLBACK_MESSAGE=This message needs a human review. Your request has been recorded for the support team, and someone will follow up through the configured support channel.
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USERNAME=mailer@example.com
+SMTP_PASSWORD=your-provider-password-or-app-password
+SMTP_FROM=mailer@example.com
+SMTP_USE_TLS=true
+SMTP_TIMEOUT=10
+```
+
+`SUPPORT_ESCALATION_EMAIL` and `SMTP_HOST` are both required to send mail. If either is absent, the API returns `notification: "not_configured"` and logs the escalation event. If the SMTP server fails, it returns `notification: "failed"` while preserving the human-review fallback.
+
+For Gmail, use an app password rather than a normal account password. Do not place SMTP credentials in frontend `VITE_*` variables or commit them to Git.

@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from src.ingest.threads import build_knowledge_threads, build_threads
 from src.pipeline import run_agent
 from src.security import resolve_repo_path
+from src.notifications import build_escalation_fallback, new_escalation_event_id, notify_human_escalation
 
 app = FastAPI(title="AI Customer Support Agent Demo")
 
@@ -88,10 +89,20 @@ def health() -> Dict[str, str]:
 def run_agent_endpoint(request: AgentRequest, x_api_key: str | None = Header(default=None, alias="X-API-Key")) -> Dict[str, Any]:
     _require_api_key(x_api_key)
     outcome = _run_for_brand(request.message, request.brand)
+    fallback = None
+    if outcome["escalation_decision"] == "escalate_to_human":
+        event_id = new_escalation_event_id()
+        notification_status = notify_human_escalation(
+            event_id=event_id,
+            brand=request.brand,
+            message=request.message,
+            outcome=outcome,
+        )
+        fallback = build_escalation_fallback(event_id, outcome, notification_status)
     return {"intent": outcome["predicted_intent"], "confidence": outcome["intent_confidence"],
             "intent_evidence": outcome["intent_evidence"], "precedents": outcome["precedents"],
             "draft_reply": outcome["draft_reply"], "decision": outcome["escalation_decision"],
-            "reason": outcome["escalation_reason"]}
+            "reason": outcome["escalation_reason"], "fallback": fallback}
 
 
 @app.post("/api/agent/run-baselines")

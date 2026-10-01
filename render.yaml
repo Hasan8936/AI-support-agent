@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: smart-job-tracker-support-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn src.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: FRONTEND_URL
+        value: https://smartjobtracker.indevs.in
